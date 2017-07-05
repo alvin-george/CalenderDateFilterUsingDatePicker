@@ -24,8 +24,7 @@ class SecondViewController: UIViewController, UIChooseDatePickerDataDelegate {
     @IBAction func chooseDatesButtonClicked(_ sender: Any) {
         
         showCustomDatePicker(currentViewControllerIdentifier: "secondViewController")
-        
-        
+                
     }
     func showCustomDatePicker(currentViewControllerIdentifier : String?)
     {

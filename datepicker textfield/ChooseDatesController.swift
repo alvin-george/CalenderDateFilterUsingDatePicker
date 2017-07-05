@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UIChooseDatePickerDataDelegate {
-
+    
     func getStartAndEndDates(startDate :String?,endDate: String?)
 }
 
@@ -20,8 +20,13 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var startDateTextField: EZTextField!
     @IBOutlet weak var endDateTextField: EZTextField!
     @IBOutlet weak var applyButton: EZButton!
+    @IBOutlet weak var applyButtonTrailingSpace: NSLayoutConstraint!
+    
     @IBOutlet weak var todayButton: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
+    
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var resetButtonImage: UIImageView!
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pickerContainerView: UIView!
@@ -71,8 +76,10 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         endDateTextField.rightImage =  UIImage(named: "down_arrow")
         
         disableApplyButton()
+        //showResetButton()
         hideTodayButton()
         setMaximumDate()
+        
         
     }
     func setMaximumDate()
@@ -80,16 +87,20 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         let date = NSDate()
         datePicker.maximumDate = date as Date
     }
-  
+    
     func enableApplyButton()
     {
         applyButton.isEnabled = true
         applyButton.alpha = 1.0
+        applyButtonTrailingSpace.constant = 70.0
+        showResetButton()
     }
     func disableApplyButton()
     {
         applyButton.isEnabled = false
         applyButton.alpha = 0.4
+        applyButtonTrailingSpace.constant = 20.0
+        hideResetButton()
         
     }
     func hideTodayButton()
@@ -104,6 +115,19 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         todayLabel.isHidden =  false
         
     }
+    func showResetButton()
+    {
+        resetButtonImage.isHidden =  false
+        resetButton.isEnabled =  true
+        
+    }
+    func hideResetButton()
+    {
+        resetButtonImage.isHidden =  true
+        resetButton.isEnabled =  false
+        
+    }
+    
     //TextField Delegates
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField.tag {
@@ -160,10 +184,12 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         startDateTextField.isEnabled =  false
         endDateTextField.isEnabled =  false
     }
-    func clearTextFieldData()
-    {
-        startDateTextField.text = ""
-        endDateTextField.text = ""
+    func clearTextFieldData()    {
+        clearStartDate()
+        clearEndDate()
+        
+        disableApplyButton()
+        
     }
     func clearStartDate()
     {
@@ -172,7 +198,7 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     }
     func clearEndDate()
     {
-       endDateTextField.text = ""
+        endDateTextField.text = ""
         selectedEndDate = nil
     }
     
@@ -180,52 +206,14 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.none
-        
-        print ("did Select row")
-        
-        //datePicker.date
-        
-        
-//        switch isStartDate {
-//        case true:
-//            selectedStartDate = dateFormatter.string(from: (sender as AnyObject).date)
-//            break
-//        case false:
-//            selectedEndDate = dateFormatter.string(from: (sender as AnyObject).date)
-//            break
-//        default :
-//            break
-//        }
-        
-        selectedIndex = row
-    }
-    
     @IBAction func cancelPicker(_ sender: Any) {
-        
-        switch isStartDate {
-        case true:
-           clearStartDate()
-            break
-        case false:
-            clearEndDate()
-             break
-        default :
-            break
-        }
         
         pickerContainerView.setViewAnimted(view: pickerContainerView, hidden: true)
         resetMenuBoxPosition()
         makeTextFieldsActive()
     }
     @IBAction func donePicker(_ sender: Any) {
- 
+        
         switch isStartDate {
         case true:
             startDateTextField.text = selectedStartDate
@@ -240,11 +228,12 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         if (selectedStartDate != nil && selectedEndDate != nil)
         {
             enableApplyButton()
+         
         }
         else {
             disableApplyButton()
+           
         }
-        
         
         pickerContainerView.setViewAnimted(view: pickerContainerView, hidden: true)
         resetMenuBoxPosition()
@@ -289,7 +278,11 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         pickerContainerView.setViewAnimted(view: pickerContainerView, hidden: true)
         resetMenuBoxPosition()
         makeTextFieldsActive()
-       
+        
+    }
+    @IBAction func resetButtonClicked(_ sender: Any) {
+        
+        clearTextFieldData()
     }
     
     

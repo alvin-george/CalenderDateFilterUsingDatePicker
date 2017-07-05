@@ -86,7 +86,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMX-3m-ckS" customClass="EZButton" customModule="datepicker_textfield" customModuleProvider="target">
-                                        <rect key="frame" x="59" y="120" width="276" height="45"/>
+                                        <rect key="frame" x="20" y="120" width="304" height="45"/>
                                         <color key="backgroundColor" red="0.31476861239999998" green="0.41043370959999997" blue="0.75971758369999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="vHW-ue-YSX"/>
@@ -98,18 +98,39 @@
                                             <action selector="applyButtonClicked:" destination="FYh-Ak-dQg" eventType="touchUpInside" id="drx-UI-J8p"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reset" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-xn-FaH">
+                                        <rect key="frame" x="349" y="130" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="Q2z-ck-j1j"/>
+                                            <constraint firstAttribute="height" constant="25" id="d5C-67-dT8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V53-RR-Kj8">
+                                        <rect key="frame" x="334" y="120" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Eag-OL-BMu"/>
+                                            <constraint firstAttribute="width" constant="60" id="lC5-uR-g4a"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="resetButtonClicked:" destination="FYh-Ak-dQg" eventType="touchUpInside" id="Kk2-fb-5GH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="xJ6-ld-hae" firstAttribute="top" secondItem="Lqc-fp-Z4a" secondAttribute="bottom" constant="10" id="9GW-nR-RUy"/>
                                     <constraint firstItem="xJ6-ld-hae" firstAttribute="leading" secondItem="m6b-EH-bFY" secondAttribute="leading" constant="20" id="DsP-MC-NL0"/>
-                                    <constraint firstItem="hMX-3m-ckS" firstAttribute="centerX" secondItem="m6b-EH-bFY" secondAttribute="centerX" id="QGB-Wj-c8z"/>
+                                    <constraint firstItem="hMX-3m-ckS" firstAttribute="leading" secondItem="m6b-EH-bFY" secondAttribute="leading" constant="20" id="EdG-3o-U8M"/>
+                                    <constraint firstAttribute="trailing" secondItem="V53-RR-Kj8" secondAttribute="trailing" id="LKF-VB-cga"/>
+                                    <constraint firstItem="V53-RR-Kj8" firstAttribute="top" secondItem="xJ6-ld-hae" secondAttribute="bottom" constant="10" id="NLq-6F-aik"/>
                                     <constraint firstAttribute="trailing" secondItem="Lqc-fp-Z4a" secondAttribute="trailing" constant="20" id="QP6-h5-DcY"/>
                                     <constraint firstItem="hMX-3m-ckS" firstAttribute="top" secondItem="xJ6-ld-hae" secondAttribute="bottom" constant="10" id="XZP-q1-Jgg"/>
                                     <constraint firstItem="Lqc-fp-Z4a" firstAttribute="top" secondItem="m6b-EH-bFY" secondAttribute="top" constant="20" id="Yfm-hw-rSN"/>
+                                    <constraint firstAttribute="trailing" secondItem="hMX-3m-ckS" secondAttribute="trailing" constant="70" id="ZES-gv-v2l"/>
                                     <constraint firstAttribute="height" constant="190" id="a4z-6k-Ybp"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cnt-xn-FaH" secondAttribute="trailing" constant="20" id="cnk-eU-zPx"/>
                                     <constraint firstItem="Lqc-fp-Z4a" firstAttribute="leading" secondItem="m6b-EH-bFY" secondAttribute="leading" constant="20" id="gPP-Hp-PNz"/>
-                                    <constraint firstItem="hMX-3m-ckS" firstAttribute="width" secondItem="m6b-EH-bFY" secondAttribute="width" multiplier="0.7" id="nuW-yP-Gh8"/>
+                                    <constraint firstItem="Cnt-xn-FaH" firstAttribute="top" secondItem="xJ6-ld-hae" secondAttribute="bottom" constant="20" id="p9F-qf-E5B"/>
                                     <constraint firstAttribute="trailing" secondItem="xJ6-ld-hae" secondAttribute="trailing" constant="20" id="zdl-Pc-AZQ"/>
                                 </constraints>
                             </view>
@@ -241,11 +262,14 @@
                     <size key="freeformSize" width="414" height="800"/>
                     <connections>
                         <outlet property="applyButton" destination="hMX-3m-ckS" id="Vo1-eo-yoh"/>
+                        <outlet property="applyButtonTrailingSpace" destination="ZES-gv-v2l" id="aqV-Fb-TKz"/>
                         <outlet property="containerBottomSpace" destination="wFt-Li-4fX" id="2Je-hu-Za8"/>
                         <outlet property="containerView" destination="m6b-EH-bFY" id="NRv-vO-ond"/>
                         <outlet property="datePicker" destination="Gva-3w-8GM" id="gSv-xz-qhB"/>
                         <outlet property="endDateTextField" destination="xJ6-ld-hae" id="rfg-Bh-iUa"/>
                         <outlet property="pickerContainerView" destination="7lq-Gl-5AJ" id="Usi-ss-Ecw"/>
+                        <outlet property="resetButton" destination="V53-RR-Kj8" id="lsS-i3-wEH"/>
+                        <outlet property="resetButtonImage" destination="Cnt-xn-FaH" id="ANd-9e-Jiq"/>
                         <outlet property="startDateTextField" destination="Lqc-fp-Z4a" id="FYh-MS-fwa"/>
                         <outlet property="todayButton" destination="3qG-QP-0fl" id="Vf1-PI-iaO"/>
                         <outlet property="todayLabel" destination="Ut0-ix-Mlo" id="3hz-Bx-qy2"/>
@@ -254,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6Q-En-Gay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="101"/>
+            <point key="canvasLocation" x="937.60000000000002" y="100.74962518740631"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="9U2-Xw-fh9">
@@ -346,4 +370,7 @@
             <point key="canvasLocation" x="1730" y="161"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reset" width="128" height="128"/>
+    </resources>
 </document>
