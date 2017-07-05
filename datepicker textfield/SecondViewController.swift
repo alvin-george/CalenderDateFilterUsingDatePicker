@@ -33,33 +33,22 @@ class SecondViewController: UIViewController, UIChooseDatePickerDataDelegate {
         //datePickerView.pickerViewItems = pickerViewItems
         datePickerView.currentViewController = currentViewControllerIdentifier!
         
+        //datePickerView.minimumDate =
+        
         datePickerView.delegate =  self
-        
-        
         datePickerView.modalPresentationStyle = .overCurrentContext
         self.present(datePickerView, animated: true, completion: nil)
         
     }
     func getStartAndEndDates(startDate: String?, endDate: String?) {
         
-        startDateLabel.text =  startDate
-        endDateLabel.text =  endDate
+        startDateLabel.text =  "start Date : " + startDate!
+        endDateLabel.text =  "end Date : " + endDate!
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

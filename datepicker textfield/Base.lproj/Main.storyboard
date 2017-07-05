@@ -163,15 +163,39 @@
                                                     <action selector="cancelPicker:" destination="FYh-Ak-dQg" eventType="touchUpInside" id="gzc-Sw-Qcj"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ut0-ix-Mlo">
+                                                <rect key="frame" x="182.5" y="10.5" width="50" height="19.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="19.5" id="f8c-dp-1Rx"/>
+                                                    <constraint firstAttribute="width" constant="50" id="p5k-tt-g5p"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qG-QP-0fl">
+                                                <rect key="frame" x="172" y="5" width="70" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="KlJ-jI-mMN"/>
+                                                    <constraint firstAttribute="width" constant="70" id="fns-k6-JCd"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="todayButtonClicked:" destination="FYh-Ak-dQg" eventType="touchUpInside" id="xSv-oL-UgZ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.31476861239999998" green="0.41043370959999997" blue="0.75971758369999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="V7N-gq-vmM" secondAttribute="bottom" id="5WK-Ax-G7E"/>
+                                            <constraint firstItem="Ut0-ix-Mlo" firstAttribute="centerX" secondItem="Fa9-Kd-48r" secondAttribute="centerX" id="GKa-kV-WTi"/>
                                             <constraint firstItem="qeq-DT-P2g" firstAttribute="top" secondItem="Fa9-Kd-48r" secondAttribute="top" constant="9" id="IEA-2K-QUW"/>
                                             <constraint firstItem="Ai2-p1-XVl" firstAttribute="top" secondItem="Fa9-Kd-48r" secondAttribute="top" constant="9" id="RnX-IS-6Id"/>
                                             <constraint firstItem="V7N-gq-vmM" firstAttribute="top" secondItem="Fa9-Kd-48r" secondAttribute="top" id="Y45-bd-HhU"/>
                                             <constraint firstItem="V7N-gq-vmM" firstAttribute="leading" secondItem="Fa9-Kd-48r" secondAttribute="leading" id="dES-PQ-BQ9"/>
                                             <constraint firstAttribute="height" constant="40" id="fXQ-2o-cpp"/>
+                                            <constraint firstItem="Ut0-ix-Mlo" firstAttribute="centerY" secondItem="Fa9-Kd-48r" secondAttribute="centerY" id="fgN-N4-Ko1"/>
+                                            <constraint firstItem="3qG-QP-0fl" firstAttribute="centerY" secondItem="Fa9-Kd-48r" secondAttribute="centerY" id="gLO-xT-EbM"/>
+                                            <constraint firstItem="3qG-QP-0fl" firstAttribute="centerX" secondItem="Fa9-Kd-48r" secondAttribute="centerX" id="hKw-Fv-S9U"/>
                                             <constraint firstItem="A2M-Gp-8h4" firstAttribute="top" secondItem="Fa9-Kd-48r" secondAttribute="top" id="jPx-QW-MAL"/>
                                             <constraint firstAttribute="trailing" secondItem="A2M-Gp-8h4" secondAttribute="trailing" id="oGd-q1-NWP"/>
                                             <constraint firstAttribute="trailing" secondItem="qeq-DT-P2g" secondAttribute="trailing" constant="10" id="sMJ-w1-glP"/>
@@ -223,6 +247,8 @@
                         <outlet property="endDateTextField" destination="xJ6-ld-hae" id="rfg-Bh-iUa"/>
                         <outlet property="pickerContainerView" destination="7lq-Gl-5AJ" id="Usi-ss-Ecw"/>
                         <outlet property="startDateTextField" destination="Lqc-fp-Z4a" id="FYh-MS-fwa"/>
+                        <outlet property="todayButton" destination="3qG-QP-0fl" id="Vf1-PI-iaO"/>
+                        <outlet property="todayLabel" destination="Ut0-ix-Mlo" id="3hz-Bx-qy2"/>
                         <outlet property="toolBarView" destination="Fa9-Kd-48r" id="iSH-rc-Y5O"/>
                     </connections>
                 </viewController>

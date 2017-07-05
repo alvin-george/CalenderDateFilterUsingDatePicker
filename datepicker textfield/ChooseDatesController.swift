@@ -20,6 +20,8 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var startDateTextField: EZTextField!
     @IBOutlet weak var endDateTextField: EZTextField!
     @IBOutlet weak var applyButton: EZButton!
+    @IBOutlet weak var todayButton: UIButton!
+    @IBOutlet weak var todayLabel: UILabel!
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pickerContainerView: UIView!
@@ -31,6 +33,11 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     var selectedStartDate:String?
     var selectedEndDate:String?
     var selectedIndex: Int = 0
+    
+    
+    var minimumDate: Date?
+    var maximumDate: Date?
+    var todaysDate:Date?
     
     
     
@@ -64,9 +71,16 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         endDateTextField.rightImage =  UIImage(named: "down_arrow")
         
         disableApplyButton()
-        
+        hideTodayButton()
+        setMaximumDate()
         
     }
+    func setMaximumDate()
+    {
+        let date = NSDate()
+        datePicker.maximumDate = date as Date
+    }
+  
     func enableApplyButton()
     {
         applyButton.isEnabled = true
@@ -78,13 +92,27 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         applyButton.alpha = 0.4
         
     }
+    func hideTodayButton()
+    {
+        todayButton.isEnabled = false
+        todayLabel.isHidden =  true
+        
+    }
+    func showTodayButton()
+    {
+        todayButton.isEnabled =  true
+        todayLabel.isHidden =  false
+        
+    }
     //TextField Delegates
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField.tag {
         case 0:
             isStartDate = true
+            hideTodayButton()
         case 1:
             isStartDate = false
+            showTodayButton()
         default:
             break
         }
@@ -144,7 +172,7 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     }
     func clearEndDate()
     {
-        endDateTextField.text = ""
+       endDateTextField.text = ""
         selectedEndDate = nil
     }
     
@@ -156,16 +184,25 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        switch isStartDate {
-        case true:
-            //self.selectedStartDate =
-            break
-        case false:
-            //self.selectedEndDate
-            break
-        default :
-            break
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        print ("did Select row")
+        
+        //datePicker.date
+        
+        
+//        switch isStartDate {
+//        case true:
+//            selectedStartDate = dateFormatter.string(from: (sender as AnyObject).date)
+//            break
+//        case false:
+//            selectedEndDate = dateFormatter.string(from: (sender as AnyObject).date)
+//            break
+//        default :
+//            break
+//        }
         
         selectedIndex = row
     }
@@ -178,19 +215,17 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
             break
         case false:
             clearEndDate()
-            
-            break
+             break
         default :
             break
         }
-        //self.delegate.datePickerDismissed(isDismissed: true)
         
         pickerContainerView.setViewAnimted(view: pickerContainerView, hidden: true)
         resetMenuBoxPosition()
         makeTextFieldsActive()
     }
     @IBAction func donePicker(_ sender: Any) {
-        
+ 
         switch isStartDate {
         case true:
             startDateTextField.text = selectedStartDate
@@ -201,10 +236,6 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         default :
             break
         }
-        
-        print("selectedStartDate :\(selectedStartDate) && selectedEndDate : \(selectedEndDate)")
-        
-        //self.delegate.datePickerDismissed(isDismissed: true)
         
         if (selectedStartDate != nil && selectedEndDate != nil)
         {
@@ -238,23 +269,27 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func getTodaysDate(_ sender: UIButton) {
-        
-        let dateformatter = DateFormatter()
-        dateformatter.dateStyle = DateFormatter.Style.medium
-        dateformatter.timeStyle = DateFormatter.Style.none
-        
-        //dateTextField.text = dateformatter.string(from: Date())
-        
-        //dateTextField.resignFirstResponder()
-        
-    }
     @IBAction func applyButtonClicked(_ sender: Any) {
         
         self.delegate.getStartAndEndDates(startDate: self.startDateTextField.text, endDate: self.endDateTextField.text)
         
         self.dismiss(animated: true)
         
+    }
+    @IBAction func todayButtonClicked(_ sender: Any) {
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.medium
+        dateformatter.timeStyle = DateFormatter.Style.none
+        selectedEndDate = dateformatter.string(from: Date())
+        endDateTextField.text = selectedEndDate
+        
+        print("selectedEndDate : \(selectedEndDate)")
+        
+        pickerContainerView.setViewAnimted(view: pickerContainerView, hidden: true)
+        resetMenuBoxPosition()
+        makeTextFieldsActive()
+       
     }
     
     
