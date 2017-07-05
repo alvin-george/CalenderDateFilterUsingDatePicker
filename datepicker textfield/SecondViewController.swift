@@ -40,16 +40,12 @@ class SecondViewController: UIViewController, UIChooseDatePickerDataDelegate {
         self.present(datePickerView, animated: true, completion: nil)
         
     }
-    
-    
-    func getStartDate(startDate: String?) {
-        print("startDate : \(startDate)")
+    func getStartAndEndDates(startDate: String?, endDate: String?) {
         
+        startDateLabel.text =  startDate
+        endDateLabel.text =  endDate
     }
-    func getEndDate(endDate: String?) {
-        print("endDate : \(endDate)")
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

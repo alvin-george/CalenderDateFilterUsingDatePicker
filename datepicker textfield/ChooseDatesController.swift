@@ -9,8 +9,8 @@
 import UIKit
 
 protocol UIChooseDatePickerDataDelegate {
-    func getEndDate(endDate: String?)
-    func getStartDate(startDate :String?)
+
+    func getStartAndEndDates(startDate :String?,endDate: String?)
 }
 
 class ChooseDatesController: UIViewController, UITextFieldDelegate {
@@ -37,7 +37,7 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
     var currentViewController : String =  String()
     var targetViewController :UIViewController?
     var delegate:UIChooseDatePickerDataDelegate!
- 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +137,16 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         startDateTextField.text = ""
         endDateTextField.text = ""
     }
+    func clearStartDate()
+    {
+        startDateTextField.text = ""
+        selectedStartDate = nil
+    }
+    func clearEndDate()
+    {
+        endDateTextField.text = ""
+        selectedEndDate = nil
+    }
     
     //Picker Delegate
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -164,15 +174,16 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         
         switch isStartDate {
         case true:
-            startDateTextField.text = ""
+           clearStartDate()
             break
         case false:
-            endDateTextField.text = ""
+            clearEndDate()
+            
             break
         default :
             break
         }
-       //self.delegate.datePickerDismissed(isDismissed: true)
+        //self.delegate.datePickerDismissed(isDismissed: true)
         
         pickerContainerView.setViewAnimted(view: pickerContainerView, hidden: true)
         resetMenuBoxPosition()
@@ -182,20 +193,20 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         
         switch isStartDate {
         case true:
-            self.delegate.getStartDate(startDate: selectedStartDate)
             startDateTextField.text = selectedStartDate
             break
         case false:
-            self.delegate.getEndDate(endDate: selectedEndDate)
             endDateTextField.text = selectedEndDate
             break
         default :
             break
         }
         
+        print("selectedStartDate :\(selectedStartDate) && selectedEndDate : \(selectedEndDate)")
+        
         //self.delegate.datePickerDismissed(isDismissed: true)
         
-        if (startDateTextField.text != nil && endDateTextField.text != nil)
+        if (selectedStartDate != nil && selectedEndDate != nil)
         {
             enableApplyButton()
         }
@@ -239,6 +250,8 @@ class ChooseDatesController: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func applyButtonClicked(_ sender: Any) {
+        
+        self.delegate.getStartAndEndDates(startDate: self.startDateTextField.text, endDate: self.endDateTextField.text)
         
         self.dismiss(animated: true)
         
