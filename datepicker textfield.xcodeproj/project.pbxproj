@@ -12,6 +12,12 @@
 		055E77661BBC375A0044A5E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 055E77641BBC375A0044A5E4 /* Main.storyboard */; };
 		055E77681BBC375A0044A5E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 055E77671BBC375A0044A5E4 /* Assets.xcassets */; };
 		055E776B1BBC375A0044A5E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 055E77691BBC375A0044A5E4 /* LaunchScreen.storyboard */; };
+		18EC38871F0CBE23002C7B04 /* ChooseDatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC38861F0CBE23002C7B04 /* ChooseDatesController.swift */; };
+		18EC388F1F0CBF71002C7B04 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC388E1F0CBF71002C7B04 /* SecondViewController.swift */; };
+		18EC38931F0CC454002C7B04 /* EZTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC38921F0CC454002C7B04 /* EZTextField.swift */; };
+		18EC38951F0CC841002C7B04 /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC38941F0CC841002C7B04 /* AppExtension.swift */; };
+		18EC38971F0CD075002C7B04 /* EZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC38961F0CD075002C7B04 /* EZButton.swift */; };
+		18EC38991F0CF074002C7B04 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC38981F0CF074002C7B04 /* AppEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		055E77671BBC375A0044A5E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		055E776A1BBC375A0044A5E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		055E776C1BBC375A0044A5E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18EC38861F0CBE23002C7B04 /* ChooseDatesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDatesController.swift; sourceTree = "<group>"; };
+		18EC388E1F0CBF71002C7B04 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		18EC38921F0CC454002C7B04 /* EZTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZTextField.swift; sourceTree = "<group>"; };
+		18EC38941F0CC841002C7B04 /* AppExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtension.swift; sourceTree = "<group>"; };
+		18EC38961F0CD075002C7B04 /* EZButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZButton.swift; sourceTree = "<group>"; };
+		18EC38981F0CF074002C7B04 /* AppEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +67,51 @@
 			isa = PBXGroup;
 			children = (
 				055E77601BBC375A0044A5E4 /* AppDelegate.swift */,
-				055E77621BBC375A0044A5E4 /* ViewController.swift */,
-				055E77641BBC375A0044A5E4 /* Main.storyboard */,
+				18EC388A1F0CBE93002C7B04 /* Helper */,
+				18EC388C1F0CBEA4002C7B04 /* CustomDatePickerView */,
+				18EC388D1F0CBEB4002C7B04 /* Controller */,
+				18EC388B1F0CBE9B002C7B04 /* View */,
 				055E77671BBC375A0044A5E4 /* Assets.xcassets */,
-				055E77691BBC375A0044A5E4 /* LaunchScreen.storyboard */,
 				055E776C1BBC375A0044A5E4 /* Info.plist */,
 			);
 			path = "datepicker textfield";
+			sourceTree = "<group>";
+		};
+		18EC388A1F0CBE93002C7B04 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				18EC38961F0CD075002C7B04 /* EZButton.swift */,
+				18EC38921F0CC454002C7B04 /* EZTextField.swift */,
+				18EC38941F0CC841002C7B04 /* AppExtension.swift */,
+				18EC38981F0CF074002C7B04 /* AppEnum.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		18EC388B1F0CBE9B002C7B04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				055E77691BBC375A0044A5E4 /* LaunchScreen.storyboard */,
+				055E77641BBC375A0044A5E4 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		18EC388C1F0CBEA4002C7B04 /* CustomDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				18EC38861F0CBE23002C7B04 /* ChooseDatesController.swift */,
+			);
+			name = CustomDatePickerView;
+			sourceTree = "<group>";
+		};
+		18EC388D1F0CBEB4002C7B04 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				055E77621BBC375A0044A5E4 /* ViewController.swift */,
+				18EC388E1F0CBF71002C7B04 /* SecondViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +145,8 @@
 				TargetAttributes = {
 					055E775C1BBC375A0044A5E4 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = G8K2Q4JU8U;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -136,6 +188,12 @@
 			files = (
 				055E77631BBC375A0044A5E4 /* ViewController.swift in Sources */,
 				055E77611BBC375A0044A5E4 /* AppDelegate.swift in Sources */,
+				18EC38951F0CC841002C7B04 /* AppExtension.swift in Sources */,
+				18EC388F1F0CBF71002C7B04 /* SecondViewController.swift in Sources */,
+				18EC38871F0CBE23002C7B04 /* ChooseDatesController.swift in Sources */,
+				18EC38931F0CC454002C7B04 /* EZTextField.swift in Sources */,
+				18EC38991F0CF074002C7B04 /* AppEnum.swift in Sources */,
+				18EC38971F0CD075002C7B04 /* EZButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +306,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G8K2Q4JU8U;
 				INFOPLIST_FILE = "datepicker textfield/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apoovmote.datepicker-textfield";
+				PRODUCT_BUNDLE_IDENTIFIER = mkumar.EyaalZayeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -259,10 +319,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G8K2Q4JU8U;
 				INFOPLIST_FILE = "datepicker textfield/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apoovmote.datepicker-textfield";
+				PRODUCT_BUNDLE_IDENTIFIER = mkumar.EyaalZayeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -285,6 +347,7 @@
 				055E77711BBC375B0044A5E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
